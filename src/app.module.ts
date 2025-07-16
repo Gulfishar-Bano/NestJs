@@ -5,6 +5,9 @@ import { AppService } from './app.service';
 import { BookModule } from './book/book.module';
 import { Book } from './book/book.entity';
 
+import { AuthModule } from './auth/auth.module';
+import { User } from './auth/user.entity';
+
 @Module({
   imports: [ TypeOrmModule.forRoot({
     type: 'mysql',
@@ -13,11 +16,12 @@ import { Book } from './book/book.entity';
     username: 'root', // or your MySQL user
     password: 'gulfisha@18',
     database: 'bookstore',
-    entities: [Book],
+    entities: [Book,User],
     synchronize: true, // turn off in production
   }),
     
-    BookModule],
+    BookModule,
+    AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
